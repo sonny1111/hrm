@@ -1,0 +1,29 @@
+no_data 02000 | no_data_found P0002 | 42701: duplicate_column | 23505: unique_violation
+
+
+select users.user_id, users.password, user.username 
+from users 
+INNER JOIN user_roles.role_id ON users.user_id = user_roles.user_id
+WHERE username = $1
+
+//User management
+delete_user, read_one_user, read_all_users, create_user, modify_user
+
+//Grant of privilge goes to role and roles are assigned to user
+add_priv,grant_priv, revoke_priv, read_one_priv, 
+read_all_privs, delete_priv, modify_priv
+
+//For roles
+create_role, delete_role, read_one_role, read_all_roles, modify_role
+
+//More than one role can be assigned to a group
+create_group, delete_group, modify_group, read_one_group, read_all_groups,
+
+//Adding user to group
+add_user_to_group, remove_user_from_group,  
+
+//Adding role to GROUP
+add_role_group, remove_role_group
+
+//Granting role to user: role must exist in user's group
+ grant_role, revoke_role, 
